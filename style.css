@@ -1,0 +1,27 @@
+#log{
+	background-color: green
+}
+
+#object{
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid;
+	margin:  1px;
+	padding: 1px;
+}
+
+#lengths{
+
+}
+
+#minmax{
+
+}
+
+#res{
+	display: flex;
+	flex-flow: row nowrap;
+}
+
