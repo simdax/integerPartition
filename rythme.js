@@ -1,11 +1,11 @@
 import Occurences from './occurences'
 import Partition from './partition'
 import m from './max'
-
+/// why is the import/export options so complicated ???
 var max = m.max;
 var min = m.min;
 
-function Rythme(res,lengths,max,min){
+function Rythme(res,lengths,min,max,reps=0){
 	
 	///var declaration
 	this.lengths = [];
@@ -15,6 +15,7 @@ function Rythme(res,lengths,max,min){
 	this.setLengths(lengths);
 	this.max = max;
 	this.min = min;
+	this.reps=reps;
 
 	/// constructor
 	this.update();
@@ -45,7 +46,10 @@ Rythme.prototype= {
 
 // main
 	conditions(el,length){
-		return el.length == length && max(el) <= this.max && min(el) >= this.min
+		return (el.length == length)
+				&& (max(el) <= this.max)
+				&& (min(el) >= this.min)
+				&& (true) 
 	},
 
 	update(){

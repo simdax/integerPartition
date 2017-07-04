@@ -11,3 +11,13 @@ export default function(array) {
 	}
 	return occurences
 }
+
+
+export let count = function (occurences, rep=1) {
+	for( var key in occurences ){
+		if (occurences[key] > rep) {
+			return true
+		}
+	}
+	return false
+}

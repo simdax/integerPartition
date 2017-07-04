@@ -1,23 +1,39 @@
 import _ from './node_modules/lodash'
 import Vue from 'vue/dist/vue.esm'
+import Velocity from './node_modules/lodash'
+import 'style-loader!css-loader!animate.css'
+
+import Permutations from './permutations'
 import R from './rythme'
 
 import "style-loader!css-loader!./style.css"
 
-var r = new R(8,[5,4],6,1)
-
+global.p = Permutations;
+var r = new R(8,[4,5],1,6);
+console.log(r);
 //debug
-global.r = r 
-global._ = _ 
 
 
 new Vue({
 	el:"#app",
-	data: {res : r},
+	data: {
+		res : r,
+		currentScale: -1,
+		modes: []
+	},
 	methods:{
-		update(){
-			this.res.update()
+		permute(array){
+			var res = Permutations(array);
+			return res
 		},
+		addMode(mode){
+			var index = this.modes.indexOf(mode);
+			if(index == -1){
+ 			  this.modes.push(mode)
+			} else{
+				this.modes.splice(index,1)
+			} 
+		}
 	},
 	watch:{
 		'res.lengths': function(){
@@ -34,11 +50,12 @@ new Vue({
 		}
 	},
 	template:`
+
 	<div>
-	function Rythme(res,nb,occ,rep,valFilter)
-	<div id="log">
-		{{ res }}
-	</div>
+
+		<div id="log">
+			{{ res }}
+		</div>
 
 		<div id="object">
 			<div id="resolution">
@@ -58,9 +75,21 @@ new Vue({
 			</div>
 			<div id="res">
 				scales : 
-				<button v-for='n in res.final'>
-					{{n}}
-				</button>
+				<div id="scales" v-for='scale,k in res.final'>
+					<button @click="currentScale==k ? currentScale =-1 : currentScale=k"> {{ scale }} </button>
+					<transition-group
+							enter-active-class='animated fadeIn'					  
+							leave-active-class='animated fadeOut'					  
+						>
+							<div id="modes" v-for='mode,kk in permute(scale)' :key="mode"
+								v-if='currentScale==k'
+								@click="addMode(mode)"
+								:style='{backgroundColor : modes.indexOf(mode)!=-1 ? "green" : "blue"}'
+							>
+							{{ mode }}
+						</div>
+					</transition-group>
+				</div>
 			</div>
 		</div>
 

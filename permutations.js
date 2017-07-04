@@ -1,3 +1,22 @@
+
+// Pasted from 
+// https://stackoverflow.com/questions/40264376/get-all-the-possible-unique-permutations
+
+
+//// ---------------------
+
+
+// usage
+
+// let a = ['^','^','>','>','+','<','<'];
+// let ps = Array.from(uniquePermutations(a));
+// let qs = ps.map(p => p.join(""));
+
+// console.log(ps.length);
+// console.log(new Set(qs).size);
+
+
+
 function swap(a, i, j) {
     const t = a[i];
     a[i] = a[j];
@@ -50,13 +69,11 @@ function* uniquePermutations(a) {
     } while (nextPermutation(b));
 }
 
-export default uniquePermutations;
 
-// usage
+// class interface
 
-// let a = ['^','^','>','>','+','<','<'];
-// let ps = Array.from(uniquePermutations(a));
-// let qs = ps.map(p => p.join(""));
+function permutations(vals){
+    return Array.from(uniquePermutations(vals)).map((v)=>v.join(""))
+}
 
-// console.log(ps.length);
-// console.log(new Set(qs).size);
+export default permutations;
