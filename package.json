@@ -5,6 +5,11 @@
     "lodash": "^4.17.4",
     "style-loader": "^0.18.2",
     "velocity": "^0.7.2",
-    "vue": "^2.3.4"
+    "vue": "^2.3.4",
+    "vue-loader": "^13.0.0",
+    "vue-router": "^2.7.0",
+    "vue-template-compiler": "^2.3.4",
+    "vue-template-loader": "^0.3.1",
+    "vuex": "^2.3.1"
   }
 }

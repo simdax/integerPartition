@@ -25,3 +25,11 @@
 	flex-flow: row nowrap;
 }
 
+#settings{
+	border: 1px solid;
+	float: left;
+	shape-outside: circle(150px at 50px 50px);
+	background-color: green;
+/*	width: 400px;
+	height: 300px;*/
+}
